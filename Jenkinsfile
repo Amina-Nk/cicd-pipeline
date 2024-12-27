@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('Git Checkout') {
       steps {
-        git(url: 'https://github.com/Amina-Nk/cicd-pipeline.git', credentialsId: 'github_credentials', branch: 'main', changelog: true)
+        script {
+          checkout scm
+        }
+
       }
     }
 

@@ -26,6 +26,18 @@ pipeline {
       }
     }
 
+    stage('Docker Push') {
+      steps {
+        script {
+          docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_creds_id') {
+            sh "docker push ${DOCKER_IMAGE}:${env.BUILD_NUMBER}"
+            sh "docker push ${DOCKER_IMAGE}:latest"
+          }
+        }
+
+      }
+    }
+
   }
   environment {
     DOCKER_IMAGE = 'aminank/cicd_pipeline_image'

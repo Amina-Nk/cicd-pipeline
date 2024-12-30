@@ -19,6 +19,8 @@ pipeline {
 
     stage('Build Application') {
       steps {
+        sh 'chmod +x scripts/build.sh'
+        sh 'whoami'
         sh './scripts/build.sh'
       }
     }
@@ -31,8 +33,8 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        sh 'docker build -t ${DOCKER_IMAGE}:${env.BUILD_NUMBER} .'
-        sh 'docker tag ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ${DOCKER_IMAGE}:latest'
+        sh 'docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} .'
+        sh 'docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest'
       }
     }
 

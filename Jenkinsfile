@@ -33,8 +33,8 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        sh 'docker build -t ${DOCKER_IMAGE}:${env.BUILD_NUMBER} .'
-        sh 'docker tag ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ${DOCKER_IMAGE}:latest'
+        sh 'docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} .'
+        sh 'docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest'
       }
     }
 

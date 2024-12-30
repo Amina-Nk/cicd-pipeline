@@ -41,6 +41,10 @@ pipeline {
     stage('Docker Push') {
       steps {
         script {
+          def app = docker.build("aminank/cicd_pipeline_image:${env.BUILD_NUMBER}")
+        }
+
+        script {
           docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_creds_id') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")

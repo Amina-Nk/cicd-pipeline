@@ -1,6 +1,5 @@
 FROM node:18.19.1
 WORKDIR /opt
-COPY package*.json ./
+ADD . /opt
 RUN npm install
-COPY . .
-ENTRYPOINT ["npm", "run", "start"]
+ENTRYPOINT npm run start

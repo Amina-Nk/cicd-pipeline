@@ -20,6 +20,7 @@ pipeline {
     stage('Build Application') {
       steps {
         sh 'chmod +x scripts/build.sh'
+        sh 'whoami'
         sh './scripts/build.sh'
       }
     }
